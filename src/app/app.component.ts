@@ -51,7 +51,7 @@ export class AppComponent {
       id: null,
       customId: 'addTemplate',
       name: 'Add new (+)',
-      type: 'addTemplate',
+      type: 'template',
     },
   ];
   options: ITreeOptions = {
