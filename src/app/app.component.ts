@@ -42,7 +42,7 @@ export class AppComponent {
         {
           id: 4,
           customId: 'addCampaignTemplate',
-          name: 'Add new (+)',
+          name: 'Add campaign template (+)',
           type: 'campaignTemplate',
         },
       ],
@@ -50,7 +50,7 @@ export class AppComponent {
     {
       id: null,
       customId: 'addTemplate',
-      name: 'Add new (+)',
+      name: 'Add template (+)',
       type: 'template',
     },
   ];
