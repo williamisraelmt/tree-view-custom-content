@@ -26,6 +26,14 @@ export class AppComponent {
           customId: '1campaignTemplate',
           name: 'Validate',
           type: 'campaignTemplate',
+          children: [
+            {
+              id: 1,
+              customId: '1adGroupTemplate',
+              name: 'Broad',
+              type: 'adGroupTemplate',
+            },
+          ],
         },
         {
           id: 2,
