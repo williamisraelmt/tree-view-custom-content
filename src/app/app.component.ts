@@ -43,7 +43,7 @@ export class AppComponent {
           id: 4,
           customId: 'addCampaignTemplate',
           name: 'Add new (+)',
-          type: 'addCampaignTemplate',
+          type: 'campaignTemplate',
         },
       ],
     },
