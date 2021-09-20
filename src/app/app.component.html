@@ -3,6 +3,19 @@
     <tree-root [nodes]="nodes" [options]="options"></tree-root>
   </div>
   <div style="flex-grow: 1; background-color: #EFEFEF; height: 100%">
-    <h2 style="padding: 1rem; margin-top: 0">Content</h2>
+    <ng-container *ngIf="selectedNode">
+      <ng-container [ngSwitch]="selectedNode.data.type">
+        <app-template *ngSwitchCase="'template'" [data]="selectedNode.data">
+        </app-template>
+        <app-campaign-template *ngSwitchCase="'campaignTemplate'">
+        </app-campaign-template>
+        <app-ad-group-template *ngSwitchCase="'adGroupTemplate'">
+        </app-ad-group-template>
+        <app-ad-group-children-template
+          *ngSwitchCase="'adGroupChildrenTemplate'"
+        >
+        </app-ad-group-children-template>
+      </ng-container>
+    </ng-container>
   </div>
 </div>

@@ -4,6 +4,7 @@ import {
   KEYS,
   TREE_ACTIONS,
 } from '@circlon/angular-tree-component';
+import { TreeNode } from '@circlon/angular-tree-component/public-api';
 
 @Component({
   selector: 'my-app',
@@ -11,32 +12,52 @@ import {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  selectedNode: TreeNode;
+
   nodes = [
     {
       id: 1,
-      name: 'root1',
+      customId: '1template',
+      name: 'Default template',
+      type: 'template',
       children: [
-        { id: 2, name: 'child1' },
-        { id: 3, name: 'child2' },
+        {
+          id: 1,
+          customId: '1campaignTemplate',
+          name: 'Validate',
+          type: 'campaignTemplate',
+        },
+        {
+          id: 2,
+          customId: '2campaignTemplate',
+          name: 'Research',
+          type: 'campaignTemplate',
+        },
+        {
+          id: 3,
+          customId: '3campaignTemplate',
+          name: 'Primary',
+          type: 'campaignTemplate',
+        },
+        {
+          id: 4,
+          customId: 'addCampaignTemplate',
+          name: 'Add new (+)',
+          type: 'addCampaignTemplate',
+        },
       ],
     },
     {
-      id: 4,
-      name: 'root2',
-      children: [
-        { id: 5, name: 'child2.1' },
-        {
-          id: 6,
-          name: 'child2.2',
-          children: [{ id: 7, name: 'subsub' }],
-        },
-      ],
+      id: null,
+      customId: 'addTemplate',
+      name: 'Add new (+)',
+      type: 'addTemplate',
     },
   ];
   options: ITreeOptions = {
     displayField: 'name',
     isExpandedField: 'expanded',
-    idField: 'id',
+    idField: 'customId',
     hasChildrenField: 'nodes',
     actionMapping: {
       mouse: {
@@ -45,7 +66,8 @@ export class AppComponent {
             TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
         },
         click: (tree, node, $event) => {
-          console.log(node);
+          this.selectedNode = node;
+          console.log(this.selectedNode);
         },
       },
       keys: {
@@ -56,12 +78,12 @@ export class AppComponent {
     },
     nodeHeight: 23,
     allowDrag: (node) => {
-      return true;
+      return false;
     },
     allowDrop: (node) => {
-      return true;
+      return false;
     },
-    allowDragoverStyling: true,
+    allowDragoverStyling: false,
     levelPadding: 10,
     useVirtualScroll: true,
     animateExpand: true,
