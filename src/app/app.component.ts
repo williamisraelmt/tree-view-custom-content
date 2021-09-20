@@ -1,4 +1,9 @@
 import { Component, VERSION } from '@angular/core';
+import {
+  ITreeOptions,
+  KEYS,
+  TREE_ACTIONS,
+} from '@circlon/angular-tree-component';
 
 @Component({
   selector: 'my-app',
@@ -28,5 +33,41 @@ export class AppComponent {
       ],
     },
   ];
-  options = {};
+  options: ITreeOptions = {
+    displayField: 'name',
+    isExpandedField: 'expanded',
+    idField: 'id',
+    hasChildrenField: 'nodes',
+    actionMapping: {
+      mouse: {
+        dblClick: (tree, node, $event) => {
+          if (node.hasChildren)
+            TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
+        },
+        click: (tree, node, $event) => {
+          console.log(node);
+        },
+      },
+      keys: {
+        [KEYS.ENTER]: (tree, node, $event) => {
+          node.expandAll();
+        },
+      },
+    },
+    nodeHeight: 23,
+    allowDrag: (node) => {
+      return true;
+    },
+    allowDrop: (node) => {
+      return true;
+    },
+    allowDragoverStyling: true,
+    levelPadding: 10,
+    useVirtualScroll: true,
+    animateExpand: true,
+    scrollOnActivate: true,
+    animateSpeed: 30,
+    animateAcceleration: 1.2,
+    scrollContainer: document.documentElement, // HTML
+  };
 }
