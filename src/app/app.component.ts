@@ -33,6 +33,12 @@ export class AppComponent {
               name: 'Broad',
               type: 'adGroupTemplate',
             },
+            {
+              id: null,
+              customId: 'addAdGroupTemplate',
+              name: 'Add new (+)',
+              type: 'adGroupTemplate',
+            },
           ],
         },
         {
@@ -50,7 +56,7 @@ export class AppComponent {
         {
           id: 4,
           customId: 'addCampaignTemplate',
-          name: 'Add campaign template (+)',
+          name: 'Add new (+)',
           type: 'campaignTemplate',
         },
       ],
@@ -58,7 +64,7 @@ export class AppComponent {
     {
       id: null,
       customId: 'addTemplate',
-      name: 'Add template (+)',
+      name: 'Add new (+)',
       type: 'template',
     },
   ];
