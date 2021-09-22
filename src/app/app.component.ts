@@ -1,4 +1,4 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, VERSION, ViewChild } from '@angular/core';
 import {
   ITreeOptions,
   KEYS,
@@ -12,6 +12,7 @@ import { TreeNode } from '@circlon/angular-tree-component/public-api';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  
   selectedNode: TreeNode;
 
   nodes = [
