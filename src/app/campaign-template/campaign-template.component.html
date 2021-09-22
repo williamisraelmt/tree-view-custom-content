@@ -15,18 +15,12 @@
       </div>
       <div class="form-group">
         <label>Daily budget</label>
-        <div style="display: flex">
-          <select class="form-control" style="width: auto">
-            <option>Integer</option>
-          </select>
-          <input
-            type="number"
-            style="margin-left: 1rem; flex-grow: 1;"
-            class="form-control"
-            placeholder="0.00"
-            value="{{ data.dailyBudget }}"
-          />
-        </div>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="0.00"
+          value="{{ data.dailyBudget }}"
+        />
       </div>
       <div class="form-group">
         <label>Bidding strategy</label>
@@ -34,12 +28,7 @@
           <option>Dynamic bids - Down only</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>Portfolio</label>
-        <select class="form-control">
-          <option>Low budget</option>
-        </select>
-      </div>
+
       <div style="display: flex; flex-direction: row; width: 100%">
         <div class="form-group">
           <label>Start date (in days)</label>
@@ -59,6 +48,39 @@
             value="1"
           />
         </div>
+      </div>
+
+      <div>
+        <div style="margin-top: .3rem; margin-bottom: .3rem;">
+          <label>Adjust bids by placements</label>
+        </div>
+        <div style="display: flex; flex-direction: row; width: 100%;">
+          <div class="form-group">
+            <label>Top of search (first page)</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="0.00"
+              value="1"
+            />
+          </div>
+          <div class="form-group" style="margin-left: 1rem">
+            <label>Product pages</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="0.00"
+              value="1"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Portfolio</label>
+        <select class="form-control">
+          <option>Low budget</option>
+        </select>
       </div>
     </form>
   </div>
