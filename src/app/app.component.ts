@@ -23,43 +23,49 @@ export class AppComponent {
       type: 'template',
       children: [
         {
-          id: 1,
-          customId: '1campaignTemplate',
-          name: 'Validate',
-          type: 'campaignTemplate',
+          customId: '1amazonAdvertisingType',
+          name: 'Sponsored products',
           children: [
             {
               id: 1,
-              customId: '1adGroupTemplate',
-              name: 'Broad',
-              type: 'adGroupTemplate',
+              customId: '1campaignTemplate',
+              name: 'Validate',
+              type: 'campaignTemplate',
+              children: [
+                {
+                  id: 1,
+                  customId: '1adGroupTemplate',
+                  name: 'Broad',
+                  type: 'adGroupTemplate',
+                },
+                {
+                  id: null,
+                  customId: 'addAdGroupTemplate',
+                  name: 'Add new (+)',
+                  type: 'adGroupTemplate',
+                },
+              ],
             },
             {
-              id: null,
-              customId: 'addAdGroupTemplate',
-              name: 'Add new (+)',
-              type: 'adGroupTemplate',
+              id: 2,
+              customId: '2campaignTemplate',
+              name: 'Research',
+              type: 'campaignTemplate',
             },
-          ],
-        },
-        {
-          id: 2,
-          customId: '2campaignTemplate',
-          name: 'Research',
-          type: 'campaignTemplate',
-        },
-        {
-          id: 3,
-          customId: '3campaignTemplate',
-          name: 'Primary',
-          type: 'campaignTemplate',
-        },
-        {
-          id: 4,
-          customId: 'addCampaignTemplate',
-          name: 'Add new (+)',
-          type: 'campaignTemplate',
-        },
+            {
+              id: 3,
+              customId: '3campaignTemplate',
+              name: 'Primary',
+              type: 'campaignTemplate',
+            },
+            {
+              id: 4,
+              customId: 'addCampaignTemplate',
+              name: 'Add new (+)',
+              type: 'campaignTemplate',
+            },
+          ]
+        }
       ],
     },
     {
