@@ -1,6 +1,6 @@
 <div style="display: flex; flex-direction: row; height: 100%">
   <div style="width: 40%">
-    <tree-root [nodes]="nodes" [options]="options"></tree-root>
+    <tree-root #tree [nodes]="nodes" [options]="options"></tree-root>
   </div>
   <div
     style="flex-grow: 1; background-color: #EFEFEF; height: 100%; width: 100%"
@@ -9,6 +9,11 @@
       <ng-container [ngSwitch]="selectedNode.data.type">
         <app-template *ngSwitchCase="'template'" [data]="selectedNode.data">
         </app-template>
+        <app-amazon-advertising-type-template
+          [data]="selectedNode.data"
+          *ngSwitchCase="'amazonAdvertisingType'"
+        >
+        </app-amazon-advertising-type-template>
         <app-campaign-template
           [data]="selectedNode.data"
           *ngSwitchCase="'campaignTemplate'"

@@ -1,4 +1,4 @@
-import { Component, VERSION, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, VERSION, ViewChild } from '@angular/core';
 import {
   ITreeOptions,
   KEYS,
@@ -6,13 +6,37 @@ import {
 } from '@circlon/angular-tree-component';
 import { TreeNode } from '@circlon/angular-tree-component/public-api';
 
+enum TemplateNodeTypeEnum {
+  template = 'template',
+  amazonAdvertisingType = 'amazonAdvertisingType',
+  campaignTemplate = 'campaignTemplate',
+  adGroupTemplate = 'adGroupTemplate',
+  adGroupChildrenTemplate = 'adGroupChildrenTemplate',
+}
+
+enum AddNodeEnum {
+  addCampaignTemplate = 'addCampaignTemplate',
+  addAdGroupTemplate = 'addAdGroupTemplate',
+}
+
+interface ITemplateNode {
+  id: number;
+  customId: string;
+  name: string;
+  type: TemplateNodeTypeEnum;
+  children: ITemplateNode[];
+}
+
+const defaultNode = {};
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  
+export class AppComponent implements AfterViewInit {
+  @ViewChild('tree') tree;
+
   selectedNode: TreeNode;
 
   nodes = [
@@ -24,6 +48,7 @@ export class AppComponent {
       children: [
         {
           customId: '1amazonAdvertisingType',
+          type: 'amazonAdvertisingType',
           name: 'Sponsored products',
           children: [
             {
@@ -40,7 +65,7 @@ export class AppComponent {
                 },
                 {
                   id: null,
-                  customId: 'addAdGroupTemplate',
+                  customId: AddNodeEnum.addAdGroupTemplate,
                   name: 'Add new (+)',
                   type: 'adGroupTemplate',
                 },
@@ -60,20 +85,20 @@ export class AppComponent {
             },
             {
               id: 4,
-              customId: 'addCampaignTemplate',
+              customId: AddNodeEnum.addCampaignTemplate,
               name: 'Add new (+)',
               type: 'campaignTemplate',
             },
-          ]
-        }
+          ],
+        },
       ],
     },
-    {
-      id: null,
-      customId: 'addTemplate',
-      name: 'Add new (+)',
-      type: 'template',
-    },
+    // ,{
+    //   id: null,
+    //   customId: 'addTemplate',
+    //   name: 'Add new (+)',
+    //   type: 'template',
+    // },
   ];
   options: ITreeOptions = {
     displayField: 'name',
@@ -87,8 +112,8 @@ export class AppComponent {
             TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
         },
         click: (tree, node, $event) => {
-          this.selectedNode = node;
-          console.log(this.selectedNode);
+          const data = node.data as ITemplateNode;
+          this.setSelectedNode(node);
         },
       },
       keys: {
@@ -113,4 +138,14 @@ export class AppComponent {
     animateAcceleration: 1.2,
     scrollContainer: document.documentElement, // HTML
   };
+
+  addNode(): void {}
+
+  ngAfterViewInit(): void {
+    this.tree.treeModel.expandAll();
+  }
+
+  setSelectedNode(node: TreeNode) {
+    this.selectedNode = node;
+  }
 }

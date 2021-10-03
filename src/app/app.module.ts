@@ -8,6 +8,7 @@ import { TemplateComponent } from './template/template.component';
 import { CampaignTemplateComponent } from './campaign-template/campaign-template.component';
 import { AdGroupTemplateComponent } from './ad-group-template/ad-group-template.component';
 import { AdGroupChildrenTemplateComponent } from './ad-group-children-template/ad-group-children-template.component';
+import { AmazonAdvertisingTypeTemplateComponent } from './amazon-advertising-type-template/amazon-advertising-type-template.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, TreeModule],
@@ -15,6 +16,7 @@ import { AdGroupChildrenTemplateComponent } from './ad-group-children-template/a
     AppComponent,
 
     TemplateComponent,
+    AmazonAdvertisingTypeTemplateComponent,
     CampaignTemplateComponent,
     AdGroupTemplateComponent,
     AdGroupChildrenTemplateComponent,
