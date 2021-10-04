@@ -27,8 +27,6 @@ interface ITemplateNode {
   children: ITemplateNode[];
 }
 
-const defaultNode = {};
-
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -113,7 +111,29 @@ export class AppComponent implements AfterViewInit {
         },
         click: (tree, node, $event) => {
           const data = node.data as ITemplateNode;
-          this.setSelectedNode(node);
+          switch (data.customId) {
+            case AddNodeEnum.addCampaignTemplate:
+              this.addNodeToParent(
+                node.parentNode,
+                new TreeNode(
+                  {
+                    id: node.parentNode.children.length,
+                    name: '',
+                    customId: '' 
+                  } as ITemplateNode,
+                  node.parentNode,
+                  tree,
+                  node.parentNode.children.length
+                )
+              );
+              break;
+            case AddNodeEnum.addAdGroupTemplate:
+              this.addNodeToParent(node.parentNode, node);
+              break;
+            default:
+              this.setSelectedNode(node);
+              break;
+          }
         },
       },
       keys: {
@@ -139,13 +159,16 @@ export class AppComponent implements AfterViewInit {
     scrollContainer: document.documentElement, // HTML
   };
 
-  addNode(): void {}
-
   ngAfterViewInit(): void {
     this.tree.treeModel.expandAll();
   }
 
   setSelectedNode(node: TreeNode) {
     this.selectedNode = node;
+  }
+
+  addNodeToParent(parentNode: TreeNode, node: TreeNode) {
+    parentNode.children.push(node);
+    this.tree.treeModel.update();
   }
 }
